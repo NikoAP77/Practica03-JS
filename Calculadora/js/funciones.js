@@ -74,23 +74,6 @@ function unMedio(signo) {
    console.log(medio);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function arit(o) {
    var caja1 = document.f1.txtcaja1.value;
    var caja2 = document.f1.txtcaja2.value;
