@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="estilo.css" rel="stylesheet" type="text/css"> 
+    <script type="text/javascript" src="js/funciones.js"></script>
+    <title>Calculadora</title>
+</head> 
+<body> 
+    <form name = "f1"> 
+        <fieldset> 
+            <legend>Calculadora</legend>   
+            <input type="text" name="txtcaja1" id="valores1">
+            <input type="text" name="txtcaja2" id="valores2"> 
+             <table>
+                 <tr> 
+                        <td ><input type="button" id= "button3" value="◄" onclick="eliminarCarac()"></td> 
+                        <td><input type="button" id= "button3" value="CE" onClick="document.f1.txtcaja2.value='0'"></td> 
+                        <td><input type="button" id= "button3" value="C" onClick="document.f1.reset(); blocdel = false;"></td> 
+                        <td><input type="button" value="±" onclick="masmenos()" ></td> 
+                        <td><input type="button" value="√" onclick="raiz()"></td>
+                 </tr> 
+                 <tr> 
+                        <td><input type="button" id= "button2" value="1"onclick="escribir(this.value)"></td> 
+                        <td><input type="button" id= "button2" value="2" onclick="escribir(this.value)"></td> 
+                        <td><input type="button" id= "button2" value="3" onclick="escribir(this.value)"></td>
+                        <td><input type="button" value="/"onclick="escribir(this.value)"></td> 
+                        <td><input type="button" value="%" onclick="arit('%')"></td>
+                 </tr> 
+                 <tr> 
+                        <td><input type="button" id= "button2" value="4" onclick="escribir(this.value)"></td> 
+                        <td><input type="button" id= "button2" value="5" onclick="escribir(this.value)"></td> 
+                        <td><input type="button" id= "button2" value="6" onclick="escribir(this.value)"></td> 
+                        <td><input type="button" value="*" onClick="arit('*')"></td> 
+                        <td><input type="button" value="1/x"  onClick="escribir('7')"></td>
+                 </tr> 
+                 <tr>  
+                        <td><input type="button" id= "button2" value="7" onclick="escribir(this.value)"></td> 
+                        <td><input type="button" id= "button2" value="8" onclick="escribir(this.value)"></td> 
+                        <td><input type="button" id= "button2" value="9"onclick="escribir(this.value)"></td>  
+                        <td><input type="button" value="-" onClick="arit('-')"></td> 
+                        <td rowspan="2"><input type="button" id= "button3" value="=" onClick="calcular()"></td>
+                 </tr> 
+                 <tr> 
+                        <td colspan="2"><input type="button" id= "button2" value="0" onclick="escribir(this.value)"></td> 
+                        <td><input type="button" value="." onClick="escribir('.')"></td> 
+                        <td><input type="button" value="+" onClick="arit('+')"></td> 
+                 </tr>
+             </table> 
+        </fieldset>
+    </form>
+    
+</body>
+</html>
