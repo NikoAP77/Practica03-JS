@@ -1,6 +1,6 @@
 function validarCamposObligatorios() {
     var bandera = true;
-    for (var i = 0; i < document.forms[0].elements.length -2 ; i++) {
+    for (var i = 0; i < document.forms[0].elements.length - 2; i++) {
         var elemento = document.forms[0].elements[i]
         if (elemento.value == '' && elemento.type == 'text') {
 
@@ -41,74 +41,157 @@ function validarCamposObligatorios() {
             bandera = false
 
         }
-        
+
     }
     return bandera
 }
 
 
-function validarCedula(){ 
+function validarCedula() {
     var cedula = document.getElementById('cedula').value.trim();
-    var tamano = cedula.length 
-    if(tamano < 10 || tamano > 10){ 
-        for(var i = 0; i < document.forms[0].elements.length; i++){ 
-            var elemento = document.forms[0].elements[i] 
-            if(elemento.id == 'cedula'){  
-            document.getElementById('mensajeCedula').innerHTML = "Complete la cedula con 10 digitos"; 
-            elemento.style.border = '1px red solid'
-             }  
+    var tamano = cedula.length
+    if (tamano < 10 || tamano > 10) {
+        for (var i = 0; i < document.forms[0].elements.length; i++) {
+            var elemento = document.forms[0].elements[i]
+            if (elemento.id == 'cedula') {
+                document.getElementById('mensajeCedula').innerHTML = "Complete la cedula con 10 digitos";
+                elemento.style.border = '1px red solid'
+            }
         }
-    }else{ 
+    } else {
         var total = 0;
         var longcheck = tamano - 1;
-    
-        if (cedula!== '' && tamano === 10){
-          for(i = 0; i < longcheck; i++){
-            if (i%2 === 0) {
-              var aux = cedula.charAt(i) * 2;
-              if (aux > 9) aux -= 9;
-              total += aux;
-            } else {
-              total += parseInt(cedula.charAt(i)); 
+
+        if (cedula !== '' && tamano === 10) {
+            for (i = 0; i < longcheck; i++) {
+                if (i % 2 === 0) {
+                    var aux = cedula.charAt(i) * 2;
+                    if (aux > 9) aux -= 9;
+                    total += aux;
+                } else {
+                    total += parseInt(cedula.charAt(i));
+                }
             }
-          }
-    
-          total = total % 10 ? 10 - total % 10 : 0;
-    
-          if (cedula.charAt(tamano-1) == total) {
-            document.getElementById('mensajeCedula').innerHTML = ("Cedula Válida");
-          }else{ 
-            for(var i = 0; i < document.forms[0].elements.length; i++){ 
-                var elemento = document.forms[0].elements[i] 
-                if(elemento.id == 'cedula'){  
-                document.getElementById('mensajeCedula').innerHTML = ("Cedula Inválida"); 
-                elemento.style.border = '1px red solid'
-             } 
-            }  
-          }
+
+            total = total % 10 ? 10 - total % 10 : 0;
+
+            if (cedula.charAt(tamano - 1) == total) {
+                document.getElementById('mensajeCedula').innerHTML = ("Cedula Válida");
+            } else {
+                for (var i = 0; i < document.forms[0].elements.length; i++) {
+                    var elemento = document.forms[0].elements[i]
+                    if (elemento.id == 'cedula') {
+                        document.getElementById('mensajeCedula').innerHTML = ("Cedula Inválida");
+                        elemento.style.border = '1px red solid'
+                    }
+                }
+            }
         }
     }
 }
 
-function validarLetras(n){   
-    var letras = document.getElementById(n.id).value 
-    console.log(letras) 
-   if(n.id == 'nombres'){  
-      var ultimo = letras.substr(letras.length-1).charCodeAt(0)
-       if((ultimo >= 65 && ultimo <= 90)||(ultimo >= 97 && ultimo <= 122)|| ultimo == 32){ 
-       }else{  
-        var bien = letras.substring(0,letras.length-1)
-        document.getElementById('nombres').value= bien 
-       }
-    }else if (n.id == 'apellidos'){  
-        var ultimo = letras.substr(letras.length-1).charCodeAt(0)
-       if((ultimo >= 65 && ultimo <= 90)||(ultimo >= 97 && ultimo <= 122)|| ultimo == 32){ 
-       }else{  
-        var bien2 = letras.substring(0,letras.length-1)
-        document.getElementById('apellidos').value= bien2
-       }
+/*function validarLetras(n) {
+    var contNom = 0;
+    var contApe = 0;
+    var letras = document.getElementById(n.id).value
+    if (n.id == 'nombres') {
+        var ultimo = letras.substr(letras.length - 1).charCodeAt(0)
+        if ((ultimo >= 65 && ultimo <= 90) || (ultimo >= 97 && ultimo <= 122) || ultimo == 32) {
+            if (ultimo == 32) {
+                contNom++;
+                if (contNom > 1) {
+                    var bien = letras.substring(0, letras.length - 1)
+                    document.getElementById('nombres').value = bien
+                }
+            }
+        } else {
+            var bien = letras.substring(0, letras.length - 1)
+            document.getElementById('nombres').value = bien
+        }
+    } else if (n.id == 'apellidos') {
+        var ultimo = letras.substr(letras.length - 1).charCodeAt(0)
+        if ((ultimo >= 65 && ultimo <= 90) || (ultimo >= 97 && ultimo <= 122) || ultimo == 32) {
+            if (ultimo == 32) {
+                contApe++;
+                if (contApe > 1) {
+                    var bien = letras.substring(0, letras.length - 1)
+                    document.getElementById('nombres').value = bien
+                }
+            }
+        } else {
+            var bien2 = letras.substring(0, letras.length - 1)
+            document.getElementById('apellidos').value = bien2
+        }
     }
-} 
+}*/
+
+
+function validarLetras(datos) {
+    var na = document.getElementById(datos.id).value
+    if (datos.id == 'nombres') {
+        var n = na.substr(na.length - 1).charCodeAt(0)
+        if ((n >= 65 && n <= 90) || (n >= 97 && n <= 122) || n == 32 || n == 225 || n == 233 || n == 237 || n == 243 || n == 250 || n == 193 || n == 201 || n == 205 || n == 211 || n == 218) {
+            nom = na.split(" ").length
+            if (nom > 2) {
+                datos.style.border = "1px red solid"
+                document.getElementById('mensajeNombres').innerHTML = '<br>Solo se permiten dos nombres'
+            }
+        } else {
+            document.getElementById('nombres').value = na.substr(0, na.length - 1)
+        }
+    } else if (datos.id == 'apellidos') {
+        var n = na.substr(na.length - 1).charCodeAt(0)
+        if ((n >= 65 && n <= 90) || (n >= 97 && n <= 122) || n == 32 || n == 225 || n == 233 || n == 237 || n == 243 || n == 250 || n == 193 || n == 201 || n == 205 || n == 211 || n == 218) {
+            ape = na.split(" ").length
+            if (ape > 2) {
+                datos.style.border = "1px red solid"
+                document.getElementById('mensajeApellidos').innerHTML = '<br>Solo se permiten dos apellidos'
+            }
+        } else {
+            document.getElementById('apellidos').value = na.substr(0, na.length - 1)
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function validarNumeros(datos) {
     var nums = document.getElementById(datos.id).value
@@ -116,7 +199,7 @@ function validarNumeros(datos) {
         if (nums.length > 10) {
             document.getElementById('mensajeTelefono').innerHTML = '<br>Número de teléfono incorrecto'
             elemento.style.border = '1px red solid'
-        } else if (nums.length < 10){
+        } else if (nums.length < 10) {
             document.getElementById('mensajeTelefono').innerHTML = ''
             var n = nums.substr(nums.length - 1).charCodeAt(0)
             if (n >= 48 && n <= 57) {
@@ -221,26 +304,26 @@ function validarFecha(datos) {
 
 
 
-function validarCorreo(){ 
-    var correo = document.getElementById("correo").value;  
+function validarCorreo() {
+    var correo = document.getElementById("correo").value;
     var long = correo.length
-    var val = correo.substring(correo.length-15)  
-    var val2 = correo.substring(correo.length-11)
-    if(val != "@est.ups.edu.ec" && val2 != "@est.ups.ec" ){ 
-        for(var i = 0; i < document.forms[0].elements.length; i++){ 
-            var elemento = document.forms[0].elements[i] 
-            if(elemento.id == 'correo'){  
-            document.getElementById('mensajeCorreo').innerHTML = ("Correo Incorrecto"); 
-            elemento.style.border = '1px red solid'
-            }  
+    var val = correo.substring(correo.length - 15)
+    var val2 = correo.substring(correo.length - 11)
+    if (val != "@est.ups.edu.ec" && val2 != "@est.ups.ec") {
+        for (var i = 0; i < document.forms[0].elements.length; i++) {
+            var elemento = document.forms[0].elements[i]
+            if (elemento.id == 'correo') {
+                document.getElementById('mensajeCorreo').innerHTML = ("Correo Incorrecto");
+                elemento.style.border = '1px red solid'
+            }
         }
-    }else if (long > 70){ 
-        for(var i = 0; i < document.forms[0].elements.length; i++){ 
-            var elemento = document.forms[0].elements[i] 
-            if(elemento.id == 'correo'){  
-            document.getElementById('mensajeCorreo').innerHTML = ("No puede tener mas de 70 caracteres"); 
-            elemento.style.border = '1px red solid'
-            }  
+    } else if (long > 70) {
+        for (var i = 0; i < document.forms[0].elements.length; i++) {
+            var elemento = document.forms[0].elements[i]
+            if (elemento.id == 'correo') {
+                document.getElementById('mensajeCorreo').innerHTML = ("No puede tener mas de 70 caracteres");
+                elemento.style.border = '1px red solid'
+            }
         }
     }
 }

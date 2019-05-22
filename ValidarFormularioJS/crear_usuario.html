@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Crear Usuario</title>
-    <link href="estilo.css" rel="stylesheet" type="text/css" />
+    <link href="estiloLogin.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="validacion_usuario.js"></script>
 </head>
 
 <body >
-        <form id="formulario01", class="contenido"  method="POST"  onsubmit="return validarCamposObligatorios()"  action="mensaje.html">
+        <form id="form" class="contenido"  method="POST"  onsubmit="return validarCamposObligatorios()"  action="mensaje.html">
         
         <label for="cedula">Cedula (*)</label>
         <input type="text" id="cedula" name="cedula" value="" placeholder="Ingrese el número de cedula ..." onblur="return validarCedula(this)"/>
