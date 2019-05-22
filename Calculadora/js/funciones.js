@@ -42,9 +42,37 @@ function calcular() {
    borrar = true;
 }
 
+function masmenos() {
+   var caja2 = document.getElementById("valores2").value;
+   var menos = caja2.indexOf('-');
+   if (caja2 != 0) {
+      if(menos == 0){
+         var mas = new Array(2)
+         mas = caja2.split('-');
+         caja2 = document.getElementById('valores2').value = mas[1]; 
+      }else{
+         document.getElementById("valores2").value = "-" + caja2;
+      }
+   }
+   else {
+      document.getElementById("valores2").value = caja2;
+   }
+}
 
+function unMedio(signo) {
+   var caja1 = document.getElementById("valores1").value;
+   var caja2 = document.getElementById('valores2').value;
 
+   var medio = signo.value;
+   var total = "1/" + caja2 + ""
+   if (caja1 == "") {
+      document.getElementById("valores1").value = total;
+   } else {
+      document.getElementById("valores1").value = caja1 + total;
+   }
 
+   console.log(medio);
+}
 
 
 
@@ -82,13 +110,3 @@ function arit(o) {
    borrar = true;
 }
 
-function masmenos() {
-   var caja2 = document.f1.txtcaja2.value;
-   if (caja2 > 0) {
-      document.f1.txtcaja2.value = "(-" + caja2 + ")";
-   }
-   else {
-      cajaplus = caja2.replace(/[-|(|)]/g, "");
-      document.f1.txtcaja2.value = cajaplus;
-   }
-}
