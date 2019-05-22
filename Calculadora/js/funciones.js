@@ -1,47 +1,58 @@
 var borrar = false;
 
 function eliminarCarac() {
-   var caja2 = document.getElementById("caja2").value;
+   var caja2 = document.getElementById("valores2").value;
    if (caja2 == "" || caja2 == "0" || caja2.length == 1) {
-      document.getElementById("caja2").value = "0";
+      document.getElementById("valores2").value = "0";
    }
    else if (caja2 != "") {
       var res = caja2.substring(0, caja2.length - 1);
-      document.getElementById("caja2").value = res;
+      document.getElementById("valores2").value = res;
    }
 }
 
 function escribir(num) {
-   var caja2 = document.getElementById("caja2").value;
+   var caja2 = document.getElementById("valores2").value;
    if (borrar == true) {
-      document.getElementById("caja2").value = "";
+      document.getElementById("valores2").value = "";
       borrar = false;
-      document.getElementById("caja2").value = num;
+      document.getElementById("valores2").value = num;
    }
    else if (caja2 == "0" && num != ".") {
       caja = caja2.replace("0", "")
-      document.getElementById("caja2").value = caja + num;
+      document.getElementById("valores2").value = caja + num;
    }
    else {
-      document.getElementById("caja2").value = caja2 + num;
+      document.getElementById("valores2").value = caja2 + num;
    }
 }
 
-
 function raiz() {
-   var caja1 = document.getElementById("caja1").value;
-   var caja2 = document.getElementById("caja2").value;
-   document.getElementById("caja1").value = "Math.sqrt(" + caja2 + caja1 + ")";
-   document.getElementById("caja2").value = "";
+   var caja1 = document.getElementById("valores1").value;
+   var caja2 = document.getElementById("valores2").value;
+   document.getElementById("valores1").value = "Math.sqrt(" + caja2 + caja1 + ")";
+   document.getElementById("valores2").value = "";
 }
 
 function calcular() {
-   var caja1 = document.getElementById("caja1").value;
-   var caja2 = document.getElementById("caja2").value;
-   document.getElementById("caja2").value = eval(caja1 + caja2);
-   document.getElementById("caja1").value = "";
+   var caja1 = document.getElementById("valores1").value;
+   var caja2 = document.getElementById("valores2").value;
+   document.getElementById("valores2").value = eval(caja1 + caja2);
+   document.getElementById("valores1").value = "";
    borrar = true;
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
